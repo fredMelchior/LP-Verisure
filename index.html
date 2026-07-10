@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oportunidade Microfranquia Verisure | Oeste do Paraná</title>
+    <style>
+        :root {
+            --primary-color: #002F6C; /* Azul Verisure */
+            --accent-color: #E30613;  /* Vermelho Destaque/Segurança */
+            --text-dark: #1A202C;
+            --text-light: #4A5568;
+            --bg-light: #F7FAFC;
+            --white: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        .logo-text {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo-text span {
+            color: var(--accent-color);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #001F47 0%, #003F88 100%);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #E2E8F0;
+            margin-bottom: 30px;
+        }
+
+        .highlight {
+            color: #FFD700;
+            font-weight: bold;
+        }
+
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .content-section {
+            padding: 40px 20px;
+        }
+
+        .card-info {
+            background-color: var(--white);
+            padding: 30px 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-top: -40px;
+            margin-bottom: 30px;
+        }
+
+        .card-info h2 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .features-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #38A169;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .form-box {
+            background-color: var(--white);
+            padding: 30px 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .form-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .form-box p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 1rem;
+            border: 2px solid #E2E8F0;
+            border-radius: 8px;
+            background-color: #FFF;
+            color: var(--text-dark);
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234A5568' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 15px;
+            padding-right: 40px;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: normal;
+            cursor: pointer;
+            padding: 10px;
+            border: 2px solid #E2E8F0;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .radio-label:hover {
+            background-color: #EDF2F7;
+        }
+
+        .radio-label input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary-color);
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            background-color: var(--accent-color);
+            color: var(--white);
+            border: none;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(227, 6, 19, 0.3);
+            transition: background-color 0.2s, transform 0.1s;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-submit:hover {
+            background-color: #B8050F;
+        }
+
+        .btn-submit:active {
+            transform: scale(0.98);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.8rem;
+            color: #718096;
+            background-color: #EDF2F7;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .card-info, .form-box {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-text">MICROFRANQUIA <span>VERISURE</span></div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="badge-container">
+                <span class="badge">Oeste do Paraná</span>
+                <span class="badge">Expansão 2026</span>
+                <span class="badge">Renda Extra / Alta Comissão</span>
+            </div>
+            <h1>Você já tem a confiança do cliente. Que tal <span class="highlight">multiplicar seu ganho</span> na mesma visita?</h1>
+            <p>Se você já entra na casa ou comércio das pessoas na região para instalar internet ou vender maquininhas, você está deixando dinheiro na mesa.</p>
+        </div>
+    </section>
+
+    <main class="content-section container">
+        
+        <div class="card-info">
+            <h2>Por que ser um Parceiro Verisure?</h2>
+            <ul class="features-list">
+                <li><strong>Monetize sua carteira:</strong> Ofereça segurança líder mundial para quem já confia no seu trabalho técnico ou comercial.</li>
+                <li><strong>Sem largar sua atividade atual:</strong> Concilie as indicações e vendas com sua rotina de rua.</li>
+                <li><strong>Ganhos Escaláveis:</strong> Comissões agressivas por cada sistema de segurança ativado.</li>
+                <li><strong>Treinamento Completo:</strong> Você não precisa ser especialista em segurança, nós te capacitamos.</li>
+            </ul>
+        </div>
+
+        <div class="form-box">
+            <h3>Avalie sua Região</h3>
+            <p>Preencha os dados abaixo. Você será direcionado para validar a disponibilidade de microfranqueado na sua cidade.</p>
+            
+            <form id="leadForm">
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" class="form-control" placeholder="Ex: João Silva" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="whatsapp">Seu WhatsApp com DDD</label>
+                    <input type="tel" id="whatsapp" class="form-control" placeholder="Ex: 45999998888" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cidade">Sua Cidade de Atuação (Oeste do PR)</label>
+                    <select id="cidade" class="form-control" required>
+                        <option value="" disabled selected>Selecione sua cidade</option>
+                        <option value="Cascavel">Cascavel</option>
+                        <option value="Toledo">Toledo</option>
+                        <option value="Foz do Iguaçu">Foz do Iguaçu</option>
+                        <option value="Marechal Cândido Rondon">Marechal Cândido Rondon</option>
+                        <option value="Medianeira">Medianeira</option>
+                        <option value="Outra Cidade do Oeste">Outra cidade da região</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Qual é a sua profissão/atividade principal atual?</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="profissao" value="Instalador de Internet / Provedor" required>
+                            Instalador de Internet / Técnico de Provedor
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="profissao" value="Vendedor de Maquininha" required>
+                            Vendedor / Representante de Maquininha de Cartão
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="profissao" value="Eletricista ou Instalador de Câmeras/CFTV" required>
+                            Eletricista ou Instalador de Câmeras/CFTV
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="profissao" value="Outra Atividade Comercial Externa" required>
+                            Outra Atividade Comercial Externa
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">Quero Avaliar a Oportunidade</button>
+            </form>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Parcerias Verisure Oeste do PR. Todos os direitos reservados.</p>
+        <p>Esta página é uma iniciativa de captação de microfranqueados autorizados para atuação regional.</p>
+    </footer>
+
+    <script>
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // INSIRA SEU NÚMERO DE WHATSAPP AQUI (Com DDD e sem espaços)
+            // Exemplo: 5545999999999 (55 da國, 45 DDD, depois o número)
+            const SEU_NUMERO_WHATSAPP = "5545999999999"; 
+
+            const nome = document.getElementById('nome').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+            const cidade = document.getElementById('cidade').value;
+            const profissao = document.querySelector('input[name="profissao"]:checked').value;
+
+            // Criando o texto dinâmico para o WhatsApp
+            const textoMensagem = `Olá! Vi a página da Microfranquia Verisure e gostaria de mais informações.
+
+` +
+                                  `*Nome:* ${nome}
+` +
+                                  `*WhatsApp:* ${whatsapp}
+` +
+                                  `*Cidade:* ${cidade}
+` +
+                                  `*Atividade Atual:* ${profissao}`;
+
+            // Codificando o texto para URL
+            const textoCodificado = encodeURIComponent(textoMensagem);
+
+            // Criando o link da API do WhatsApp
+            const linkWhatsapp = `https://api.whatsapp.com/send?phone=${SEU_NUMERO_WHATSAPP}&text=${textoCodificado}`;
+
+            // Redirecionando o usuário para o WhatsApp
+            window.open(linkWhatsapp, '_blank');
+        });
+    </script>
+</body>
+</html>
