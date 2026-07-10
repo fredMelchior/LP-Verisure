@@ -304,12 +304,12 @@
             <form id="leadForm">
                 <div class="form-group">
                     <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" class="form-control" placeholder="Ex: João Silva" required>
+                    <input type="text" id="nome" class="form-control" placeholder="Ex: João Silva" required maxlength="60">
                 </div>
 
                 <div class="form-group">
-                    <label for="whatsapp">Seu WhatsApp com DDD</label>
-                    <input type="tel" id="whatsapp" class="form-control" placeholder="Ex: 45999998888" required>
+                    <label for="email">Seu melhor E-mail</label>
+                    <input type="tel" id="email" class="form-control" placeholder="Ex: joaosilva@gmail.com" required maxlength="120">
                 </div>
 
                 <div class="form-group">
@@ -317,10 +317,10 @@
                     <select id="cidade" class="form-control" required>
                         <option value="" disabled selected>Selecione sua cidade</option>
                         <option value="Cascavel">Cascavel</option>
-                        <option value="Toledo">Toledo</option>
                         <option value="Foz do Iguaçu">Foz do Iguaçu</option>
-                        <option value="Marechal Cândido Rondon">Marechal Cândido Rondon</option>
                         <option value="Medianeira">Medianeira</option>
+                        <option value="Palotina">Palotina</option>
+                        <option value="Toledo">Toledo</option>
                         <option value="Outra Cidade do Oeste">Outra cidade da região</option>
                     </select>
                 </div>
@@ -364,10 +364,10 @@
             
             // INSIRA SEU NÚMERO DE WHATSAPP AQUI (Com DDD e sem espaços)
             // Exemplo: 5545999999999 (55 da國, 45 DDD, depois o número)
-            const SEU_NUMERO_WHATSAPP = "5545999999999"; 
+            const SEU_NUMERO_WHATSAPP = "5545991440898"; 
 
             const nome = document.getElementById('nome').value;
-            const whatsapp = document.getElementById('whatsapp').value;
+            const email = document.getElementById('email').value;
             const cidade = document.getElementById('cidade').value;
             const profissao = document.querySelector('input[name="profissao"]:checked').value;
 
@@ -377,7 +377,7 @@
 ` +
                                   `*Nome:* ${nome}
 ` +
-                                  `*WhatsApp:* ${whatsapp}
+                                  `*E-mail:* ${email}
 ` +
                                   `*Cidade:* ${cidade}
 ` +
