@@ -301,20 +301,25 @@
             <h3>Avalie sua Região</h3>
             <p>Preencha os dados abaixo. Você será direcionado para validar a disponibilidade de microfranqueado na sua cidade.</p>
             
-            <form id="leadForm">
+            <form id="leadForm" action="https://formspree.io/f/mzdnzddy" method="POST">
                 <div class="form-group">
                     <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" class="form-control" placeholder="Ex: João Silva" required maxlength="60">
+                    <input type="text" id="nome" name="nome" class="form-control" placeholder="Ex: João Silva" required maxlength="60">
+                </div>
+
+                <div class="form-group">
+                    <label for="whatsapp">WhatsApp</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" class="form-control" placeholder="Ex: (45) 98888-9999" required maxlength="11">
                 </div>
 
                 <div class="form-group">
                     <label for="email">Seu melhor E-mail</label>
-                    <input type="tel" id="email" class="form-control" placeholder="Ex: joaosilva@gmail.com" required maxlength="120">
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Ex: joaosilva@gmail.com" required maxlength="120">
                 </div>
 
                 <div class="form-group">
                     <label for="cidade">Sua Cidade de Atuação (Oeste do PR)</label>
-                    <select id="cidade" class="form-control" required>
+                    <select id="cidade" name="cidade" class="form-control" required>
                         <option value="" disabled selected>Selecione sua cidade</option>
                         <option value="Cascavel">Cascavel</option>
                         <option value="Foz do Iguaçu">Foz do Iguaçu</option>
@@ -358,7 +363,7 @@
         <p>Esta página é uma iniciativa de captação de microfranqueados autorizados para atuação regional.</p>
     </footer>
 
-    <script>
+    <!-- <script>
         document.getElementById('leadForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -392,6 +397,46 @@
             // Redirecionando o usuário para o WhatsApp
             window.open(linkWhatsapp, '_blank');
         });
-    </script>
+    </script> -->
+
+    <script>
+    const form = document.getElementById('leadForm');
+    
+    const URL_PLANILHA = "https://script.google.com/macros/s/AKfycbzgCovmh1F4KRArQnK4sVzHKJQoxM5H_Jas2Q5eA6qCXVJqPTohpho1IMtSKJS7yxNYDg/exec"; 
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault(); // Impede o recarregamento da página
+
+        const button = form.querySelector('.btn-submit');
+        button.innerText = "Enviando...";
+        button.disabled = true;
+
+        // Monta os dados do formulário no formato correto para envio
+        const formData = new FormData(form);
+        const queryParams = new URLSearchParams(formData).toString();
+
+        try {
+            // Envia os dados para a planilha usando fetch
+            await fetch(`${URL_PLANILHA}?${queryParams}`, {
+                method: 'POST',
+                mode: 'no-cors' // Evita erros de CORS (bloqueio de segurança do navegador)
+            });
+
+            // Mensagem de sucesso na tela substituindo o formulário
+            document.querySelector('.form-box').innerHTML = `
+                <div style="text-align: center; padding: 20px;">
+                    <h3 style="color: #38A169; margin-bottom: 10px;">✓ Cadastro Recebido!</h3>
+                    <p style="color: #4A5568;">Muito obrigado. Suas informações foram salvas com sucesso e nossa equipe regional entrará em contato em breve!</p>
+                </div>
+            `;
+
+        } catch (error) {
+            console.error("Erro no envio:", error);
+            alert("Ocorreu um erro ao enviar os dados. Por favor, tente novamente.");
+            button.innerText = "Quero Avaliar a Oportunidade";
+            button.disabled = false;
+        }
+    });
+</script>
 </body>
 </html>
