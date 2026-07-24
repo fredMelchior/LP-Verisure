@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Oportunidade Verisure | Oeste do Paraná</title>
     <style>
         :root {
@@ -12,6 +12,8 @@
             --text-light: #4A5568;
             --bg-light: #F7FAFC;
             --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --success: #38A169;
         }
 
         * {
@@ -19,6 +21,7 @@
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -48,7 +51,7 @@
         .hero {
             background: linear-gradient(135deg, #001F47 0%, #003F88 100%);
             color: var(--white);
-            padding: 60px 20px;
+            padding: 40px 20px 60px 20px;
             text-align: center;
         }
 
@@ -58,16 +61,16 @@
         }
 
         .hero h1 {
-            font-size: 2.2rem;
-            line-height: 1.2;
-            margin-bottom: 20px;
+            font-size: 1.8rem;
+            line-height: 1.3;
+            margin-bottom: 15px;
             font-weight: 800;
         }
 
         .hero p {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #E2E8F0;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .highlight {
@@ -78,8 +81,8 @@
         .badge-container {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-bottom: 25px;
+            gap: 8px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
         }
 
@@ -87,26 +90,26 @@
             background-color: rgba(255, 255, 255, 0.15);
             padding: 6px 12px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
             border: 1px solid rgba(255, 255, 255, 0.25);
         }
 
         .content-section {
-            padding: 40px 20px;
+            padding: 20px 15px;
         }
 
         .card-info {
             background-color: var(--white);
-            padding: 30px 25px;
+            padding: 25px 20px;
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             margin-top: -40px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .card-info h2 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--primary-color);
             margin-bottom: 15px;
             text-align: center;
@@ -114,15 +117,15 @@
 
         .features-list {
             list-style: none;
-            margin-bottom: 25px;
+            margin-bottom: 10px;
         }
 
         .features-list li {
             position: relative;
             padding-left: 30px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             color: var(--text-light);
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .features-list li::before {
@@ -130,31 +133,113 @@
             position: absolute;
             left: 0;
             top: 0;
-            color: #38A169;
+            color: var(--success);
             font-weight: bold;
             font-size: 1.2rem;
         }
 
+        /* Formulario Multi-step */
         .form-box {
             background-color: var(--white);
-            padding: 30px 25px;
+            padding: 30px 20px;
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             border-top: 5px solid var(--primary-color);
+            position: relative;
         }
 
-        .form-box h3 {
-            font-size: 1.3rem;
-            margin-bottom: 8px;
-            color: var(--text-dark);
-            text-align: center;
+        .step {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
         }
 
-        .form-box p {
-            font-size: 0.9rem;
-            color: var(--text-light);
+        .step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-header {
             text-align: center;
             margin-bottom: 25px;
+        }
+
+        .step-header h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .step-header p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .progress-bar {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background-color: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        /* Estilo dos cards selecionaveis (Radio Buttons) */
+        .option-card {
+            display: block;
+            position: relative;
+            padding: 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            color: var(--text-dark);
+            background-color: #fff;
+        }
+
+        .option-card:hover {
+            border-color: #A0AEC0;
+        }
+
+        .option-card input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .option-card.selected {
+            border-color: var(--primary-color);
+            background-color: #F0F7FF;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .option-card.selected::after {
+            content: "✓";
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
         }
 
         .form-group {
@@ -163,17 +248,17 @@
 
         .form-group label {
             display: block;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             color: var(--text-dark);
         }
 
         .form-control {
             width: 100%;
-            padding: 12px 15px;
+            padding: 14px 15px;
             font-size: 1rem;
-            border: 2px solid #E2E8F0;
+            border: 2px solid var(--border-color);
             border-radius: 8px;
             background-color: #FFF;
             color: var(--text-dark);
@@ -194,58 +279,82 @@
             padding-right: 40px;
         }
 
-        .radio-group {
+        .btn-actions {
             display: flex;
-            flex-direction: column;
             gap: 10px;
-            margin-top: 8px;
+            margin-top: 25px;
         }
 
-        .radio-label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: normal;
-            cursor: pointer;
-            padding: 10px;
-            border: 2px solid #E2E8F0;
-            border-radius: 8px;
-            transition: all 0.2s;
-        }
-
-        .radio-label:hover {
-            background-color: #EDF2F7;
-        }
-
-        .radio-label input[type="radio"] {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--primary-color);
-        }
-
-        .btn-submit {
-            display: block;
-            width: 100%;
-            background-color: var(--accent-color);
-            color: var(--white);
-            border: none;
+        .btn {
+            flex: 1;
             padding: 15px;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: bold;
             border-radius: 8px;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(227, 6, 19, 0.3);
-            transition: background-color 0.2s, transform 0.1s;
             text-align: center;
-            text-decoration: none;
+            border: none;
+            transition: all 0.2s;
         }
 
-        .btn-submit:hover {
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(227, 6, 19, 0.2);
+        }
+
+        .btn-primary:hover {
             background-color: #B8050F;
         }
 
-        .btn-submit:active {
+        .btn-primary:active {
             transform: scale(0.98);
+        }
+
+        .btn-primary:disabled {
+            background-color: #cbd5e0;
+            box-shadow: none;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background-color: var(--border-color);
+            color: var(--text-light);
+            flex: 0.4;
+        }
+
+        .btn-secondary:hover {
+            background-color: #CBD5E0;
+        }
+
+        /* Success Message */
+        .success-box {
+            text-align: center;
+            padding: 20px 10px;
+        }
+
+        .success-icon {
+            font-size: 3rem;
+            color: var(--success);
+            margin-bottom: 15px;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #25D366;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
         }
 
         footer {
@@ -257,13 +366,9 @@
             margin-top: 40px;
         }
 
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            .card-info, .form-box {
-                padding: 20px 15px;
-            }
+        @media (min-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .content-section { padding: 40px 20px; }
         }
     </style>
 </head>
@@ -277,11 +382,13 @@
         <div class="container">
             <div class="badge-container">
                 <span class="badge">Expansão 2026</span>
-                <span class="badge">Renda Extra / Alta Comissão</span>
+                <span class="badge">Renda Extra / Comissões</span>
                 <span class="badge">Oeste do Paraná</span>
             </div>
-            <h1>Você já tem a confiança do cliente. Que tal <span class="highlight">multiplicar seu ganho</span> na mesma visita?</h1>
-            <p>Se você já entra na casa ou comércio das pessoas na região para instalar internet ou vender maquininhas, você está deixando dinheiro na mesa.</p>
+            <h1>Que tal <span class="highlight">multiplicar seu ganho</span> ou conquistar seu próprio negócio?</h1>
+            <p>Se você está cansado de ser funcionário essa é sua chance de se tornar um <b>empreendedor!</b></p>
+            <p>Se você já entra na casa ou comércio das pessoas para instalar internet ou vender maquininhas, <b>você está deixando dinheiro na mesa.</b></p>
+            <h3>Seja com ou sem experiência, a Verisure está aqui para te ajudar!</h3>
         </div>
     </section>
 
@@ -290,153 +397,245 @@
         <div class="card-info">
             <h2>Por que ser um Parceiro Verisure?</h2>
             <ul class="features-list">
-                <li><strong>Monetize sua carteira:</strong> Ofereça segurança líder mundial para quem já confia no seu trabalho técnico ou comercial.</li>
+                <li><strong>Ajuda de Custo e Suporte</strong> Você terá nosso apoio para superar os desafios inicias.</li>
+                <li><strong>Monetize sua carteira:</strong> Ofereça segurança líder mundial para quem já confia no seu trabalho.</li>
                 <li><strong>Sem largar sua atividade atual:</strong> Concilie as indicações e vendas com sua rotina de rua.</li>
-                <li><strong>Ganhos Escaláveis:</strong> Comissões agressivas por cada sistema de segurança ativado.</li>
-                <li><strong>Treinamento Completo:</strong> Você não precisa ser especialista em segurança, nós te capacitamos.</li>
+                <li><strong>Ganhos Escaláveis:</strong> Comissões agressivas por cada sistema ativado.</li>
+                <li><strong>Treinamento Completo:</strong> Você não precisa ser especialista, nós te capacitamos.</li>
             </ul>
         </div>
 
-        <div class="form-box">
-            <h3>Avalie sua Região</h3>
-            <p>Preencha os dados abaixo. Você será direcionado para validar a disponibilidade de microfranqueado na sua cidade.</p>
+        <div class="form-box" id="form-container">
             
-            <form id="leadForm" action="https://formspree.io/f/mzdnzddy" method="POST">
-                <div class="form-group">
-                    <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" name="nome" class="form-control" placeholder="Ex: João Silva" required maxlength="60">
-                </div>
+            <div class="progress-bar">
+                <div class="dot active" id="dot-1"></div>
+                <div class="dot" id="dot-2"></div>
+                <div class="dot" id="dot-3"></div>
+            </div>
 
-                <div class="form-group">
-                    <label for="whatsapp">WhatsApp</label>
-                    <input type="tel" id="whatsapp" name="whatsapp" class="form-control" placeholder="Ex: (45) 98888-9999" required maxlength="11">
-                </div>
+            <form id="leadForm">
+                <!-- PASSO 1 -->
+                <div class="step active" id="step-1">
+                    <div class="step-header">
+                        <h3>Qual é sua área de atuação?</h3>
+                        <p>Selecione a opção que melhor descreve seu dia a dia.</p>
+                    </div>
 
-                <div class="form-group">
-                    <label for="email">Seu melhor E-mail</label>
-                    <input type="email" id="email" name="email" class="form-control" placeholder="Ex: joaosilva@gmail.com" required maxlength="120">
-                </div>
+                    <label class="option-card">
+                        <input type="radio" name="profissao" value="Instalador de Internet / Provedor">
+                        Instalador de Internet / Técnico
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="profissao" value="Vendedor de Maquininha">
+                        Vendedor de Maquininhas de Cartão
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="profissao" value="Eletricista ou Instalador de Câmeras/CFTV">
+                        Eletricista ou Instalador de Câmeras
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="profissao" value="Outra Atividade Comercial Externa">
+                        Outra Atividade
+                    </label>
 
-                <div class="form-group">
-                    <label for="cidade">Sua Cidade de Atuação (Oeste do PR)</label>
-                    <select id="cidade" name="cidade" class="form-control" required>
-                        <option value="" disabled selected>Selecione sua cidade</option>
-                        <option value="Cascavel">Cascavel</option>
-                        <option value="Foz do Iguaçu">Foz do Iguaçu</option>
-                        <option value="Medianeira">Medianeira</option>
-                        <option value="Palotina">Palotina</option>
-                        <option value="Toledo">Toledo</option>
-                        <option value="Outra Cidade do Oeste">Outra cidade da região</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Qual é a sua profissão/atividade principal atual?</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="profissao" value="Instalador de Internet / Provedor" required>
-                            Instalador de Internet / Técnico de Provedor
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="profissao" value="Vendedor de Maquininha" required>
-                            Vendedor / Representante de Maquininha de Cartão
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="profissao" value="Eletricista ou Instalador de Câmeras/CFTV" required>
-                            Eletricista ou Instalador de Câmeras/CFTV
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="profissao" value="Outra Atividade Comercial Externa" required>
-                            Outra Atividade Comercial Externa
-                        </label>
+                    <div class="btn-actions">
+                        <button type="button" class="btn btn-primary" id="btn-next-1" disabled>Próxima Etapa</button>
                     </div>
                 </div>
 
-                <button type="submit" class="btn-submit">Quero Avaliar a Oportunidade</button>
+                <!-- PASSO 2 -->
+                <div class="step" id="step-2">
+                    <div class="step-header">
+                        <h3>Onde você atua?</h3>
+                        <p>Precisamos saber para checar a disponibilidade de vagas de parceiros.</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cidade">Sua Cidade (Oeste do PR)</label>
+                        <select id="cidade" name="cidade" class="form-control" required>
+                            <option value="" disabled selected>Selecione sua cidade...</option>
+                            <option value="Cascavel">Cascavel</option>
+                            <option value="Foz do Iguaçu">Foz do Iguaçu</option>
+                            <option value="Medianeira">Medianeira</option>
+                            <option value="Palotina">Palotina</option>
+                            <option value="Toledo">Toledo</option>
+                            <option value="Outra Cidade do Oeste">Outra cidade da região</option>
+                        </select>
+                    </div>
+
+                    <div class="btn-actions">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(1)">Voltar</button>
+                        <button type="button" class="btn btn-primary" id="btn-next-2" disabled>Próxima Etapa</button>
+                    </div>
+                </div>
+
+                <!-- PASSO 3 -->
+                <div class="step" id="step-3">
+                    <div class="step-header">
+                        <h3>Última etapa!</h3>
+                        <p>Como podemos chamar você no WhatsApp para passar os detalhes?</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nome">Seu Nome</label>
+                        <input type="text" id="nome" name="nome" class="form-control" placeholder="Ex: João" required maxlength="60">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="whatsapp">Seu WhatsApp</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" class="form-control" placeholder="(45) 99999-9999" required maxlength="15">
+                    </div>
+
+                    <div class="btn-actions">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(2)">Voltar</button>
+                        <button type="submit" class="btn btn-primary" id="btn-submit">Verificar Vagas Disponíveis</button>
+                    </div>
+                </div>
             </form>
         </div>
 
     </main>
 
     <footer>
-        <p>© 2026 Parcerias Verisure Oeste do PR. Todos os direitos reservados.</p>
-        <p>Esta página é uma iniciativa de captação de microfranqueados autorizados para atuação regional.</p>
+        <p>© 2026 Verisure Cascavel. Todos os direitos reservados.</p>
+        <p>Esta página é uma iniciativa de captação de parceiros comerciais autorizados para atuação regional.</p>
     </footer>
 
-    <!-- <script>
-        document.getElementById('leadForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // INSIRA SEU NÚMERO DE WHATSAPP AQUI (Com DDD e sem espaços)
-            // Exemplo: 5545999999999 (55 da國, 45 DDD, depois o número)
-            const SEU_NUMERO_WHATSAPP = "5545991440898"; 
-
-            const nome = document.getElementById('nome').value;
-            const email = document.getElementById('email').value;
-            const cidade = document.getElementById('cidade').value;
-            const profissao = document.querySelector('input[name="profissao"]:checked').value;
-
-            // Criando o texto dinâmico para o WhatsApp
-            const textoMensagem = `Olá! Vi a página da Microfranquia Verisure e gostaria de mais informações.
-
-` +
-                                  `*Nome:* ${nome}
-` +
-                                  `*E-mail:* ${email}
-` +
-                                  `*Cidade:* ${cidade}
-` +
-                                  `*Atividade Atual:* ${profissao}`;
-
-            // Codificando o texto para URL
-            const textoCodificado = encodeURIComponent(textoMensagem);
-
-            // Criando o link da API do WhatsApp
-            const linkWhatsapp = `https://api.whatsapp.com/send?phone=${SEU_NUMERO_WHATSAPP}&text=${textoCodificado}`;
-
-            // Redirecionando o usuário para o WhatsApp
-            window.open(linkWhatsapp, '_blank');
-        });
-    </script> -->
-
     <script>
-    const form = document.getElementById('leadForm');
-    
-    const URL_PLANILHA = "https://script.google.com/macros/s/AKfycbzgCovmh1F4KRArQnK4sVzHKJQoxM5H_Jas2Q5eA6qCXVJqPTohpho1IMtSKJS7yxNYDg/exec"; 
+        // Lógica de Steps do Formulário
+        const step1 = document.getElementById('step-1');
+        const step2 = document.getElementById('step-2');
+        const step3 = document.getElementById('step-3');
+        
+        const dot1 = document.getElementById('dot-1');
+        const dot2 = document.getElementById('dot-2');
+        const dot3 = document.getElementById('dot-3');
 
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault(); // Impede o recarregamento da página
-
-        const button = form.querySelector('.btn-submit');
-        button.innerText = "Enviando...";
-        button.disabled = true;
-
-        // Monta os dados do formulário no formato correto para envio
-        const formData = new FormData(form);
-        const queryParams = new URLSearchParams(formData).toString();
-
-        try {
-            // Envia os dados para a planilha usando fetch
-            await fetch(`${URL_PLANILHA}?${queryParams}`, {
-                method: 'POST',
-                mode: 'no-cors' // Evita erros de CORS (bloqueio de segurança do navegador)
+        // Seleção de Profissão (Cards)
+        const optionCards = document.querySelectorAll('.option-card');
+        const btnNext1 = document.getElementById('btn-next-1');
+        
+        optionCards.forEach(card => {
+            card.addEventListener('click', function() {
+                // Remove selected from all
+                optionCards.forEach(c => c.classList.remove('selected'));
+                // Add selected to clicked
+                this.classList.add('selected');
+                // Check internal radio
+                this.querySelector('input[type="radio"]').checked = true;
+                // Enable next button
+                btnNext1.disabled = false;
             });
+        });
 
-            // Mensagem de sucesso na tela substituindo o formulário
-            document.querySelector('.form-box').innerHTML = `
-                <div style="text-align: center; padding: 20px;">
-                    <h3 style="color: #38A169; margin-bottom: 10px;">✓ Cadastro Recebido!</h3>
-                    <p style="color: #4A5568;">Muito obrigado. Suas informações foram salvas com sucesso e nossa equipe regional entrará em contato em breve!</p>
-                </div>
-            `;
+        // Avançar Passo 1 -> 2
+        btnNext1.addEventListener('click', () => {
+            step1.classList.remove('active');
+            step2.classList.add('active');
+            dot1.classList.remove('active');
+            dot2.classList.add('active');
+        });
 
-        } catch (error) {
-            console.error("Erro no envio:", error);
-            alert("Ocorreu um erro ao enviar os dados. Por favor, tente novamente.");
-            button.innerText = "Quero Avaliar a Oportunidade";
-            button.disabled = false;
+        // Seleção de Cidade
+        const selectCidade = document.getElementById('cidade');
+        const btnNext2 = document.getElementById('btn-next-2');
+        
+        selectCidade.addEventListener('change', () => {
+            if(selectCidade.value !== "") {
+                btnNext2.disabled = false;
+            }
+        });
+
+        // Avançar Passo 2 -> 3
+        btnNext2.addEventListener('click', () => {
+            step2.classList.remove('active');
+            step3.classList.add('active');
+            dot2.classList.remove('active');
+            dot3.classList.add('active');
+        });
+
+        // Voltar
+        function prevStep(step) {
+            if(step === 1) {
+                step2.classList.remove('active');
+                step1.classList.add('active');
+                dot2.classList.remove('active');
+                dot1.classList.add('active');
+            } else if (step === 2) {
+                step3.classList.remove('active');
+                step2.classList.add('active');
+                dot3.classList.remove('active');
+                dot2.classList.add('active');
+            }
         }
-    });
-</script>
+
+        // Máscara Simples de WhatsApp
+        const inputWhatsapp = document.getElementById('whatsapp');
+        inputWhatsapp.addEventListener('input', function (e) {
+            var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        });
+
+        // Submissão do Formulário
+        const form = document.getElementById('leadForm');
+        const URL_PLANILHA = "https://script.google.com/macros/s/AKfycbzgCovmh1F4KRArQnK4sVzHKJQoxM5H_Jas2Q5eA6qCXVJqPTohpho1IMtSKJS7yxNYDg/exec"; 
+        
+        // Substitua pelo número real de atendimento da franquia
+        const SEU_NUMERO_WHATSAPP = "5545991440898"; 
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault(); 
+
+            const btnSubmit = document.getElementById('btn-submit');
+            const nome = document.getElementById('nome').value;
+            const profissao = document.querySelector('input[name="profissao"]:checked').value;
+            
+            // Validação simples
+            if(inputWhatsapp.value.length < 14) {
+                alert("Por favor, digite um número de WhatsApp válido.");
+                return;
+            }
+
+            btnSubmit.innerText = "Enviando dados...";
+            btnSubmit.disabled = true;
+
+            const formData = new FormData(form);
+            const queryParams = new URLSearchParams(formData).toString();
+
+            try {
+                // Envia para o Google Sheets em background
+                await fetch(`${URL_PLANILHA}?${queryParams}`, {
+                    method: 'POST',
+                    mode: 'no-cors'
+                });
+
+                // Cria a mensagem para o WhatsApp com quebra de gelo otimizada
+                const textoMensagem = `Olá! Acabei de me cadastrar para saber sobre a parceria Verisure na região. Sou ${nome} e atuo como ${profissao}. Pode me passar os detalhes?`;
+                const linkWhatsapp = `https://api.whatsapp.com/send?phone=${SEU_NUMERO_WHATSAPP}&text=${encodeURIComponent(textoMensagem)}`;
+
+                // Substitui o form por tela de sucesso e botão para o WhatsApp
+                document.getElementById('form-container').innerHTML = `
+                    <div class="success-box">
+                        <div class="success-icon">✓</div>
+                        <h3 style="color: var(--primary-color); margin-bottom: 10px; font-size: 1.5rem;">Tudo certo, ${nome}!</h3>
+                        <p style="color: var(--text-light); margin-bottom: 20px;">Sua região possui potencial. Clique no botão abaixo para falar com nosso consultor no WhatsApp e receber os detalhes da parceria.</p>
+                        <a href="${linkWhatsapp}" target="_blank" class="btn-whatsapp">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            Falar com Consultor
+                        </a>
+                    </div>
+                `;
+
+                // Opção de abrir direto automaticamente
+                // window.open(linkWhatsapp, '_blank');
+
+            } catch (error) {
+                console.error("Erro:", error);
+                alert("Ops, tivemos um erro de conexão. Tente novamente.");
+                btnSubmit.innerText = "Verificar Vagas Disponíveis";
+                btnSubmit.disabled = false;
+            }
+        });
+    </script>
 </body>
 </html>
